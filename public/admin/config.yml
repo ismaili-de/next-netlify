@@ -1,9 +1,29 @@
 backend:
   name: git-gateway
   branch: master
+
+i18n:
+  # Required and can be one of multiple_folders, multiple_files or single_file
+  # multiple_folders - persists files in `<folder>/<locale>/<slug>.<extension>`
+  # multiple_files - persists files in `<folder>/<slug>.<locale>.<extension>`
+  # single_file - persists a single file in `<folder>/<slug>.<extension>`
+  structure: multiple_folders
+
+  # Required - a list of locales to show in the editor UI
+  locales: [en, de]
+
+  # Optional, defaults to the first item in locales.
+  # The locale to be used for fields validation and as a baseline for the entry.
+  default_locale: en
+
 media_folder: public/images/uploads
 public_folder: /images/uploads
+
 collections:
+  - name: i18n_content
+    # same as the top level, but all fields are optional and defaults to the top level
+    # can also be a boolean to accept the top level defaults
+    i18n: true
   - name: "pages"
     label: "Pages"
     files:
@@ -20,3 +40,20 @@ collections:
           fields:
             - { label: "Name", name: "name", widget: "string"}
             - { label: "Description", name: "description", widget: "text"}
+  - name: posts
+    label: Posts
+    folder: content/posts
+    create: true
+    i18n: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        i18n: true
+      - label: Date
+        name: date
+        widget: datetime
+        i18n: duplicate
+      - label: Body
+        name: body
+        widget: markdown

@@ -14,3 +14,6 @@ Welcome to my awesome page about cats of the internet.
 This page is built with NextJS, and content is managed in Netlify CMS
 
 See help for this file at [netlifyCMS](https://www.netlifycms.org/docs/nextjs/)
+
+* [Nextjs i18n](https://nextjs.org/docs/advanced-features/i18n-routing)
+* [Netlify CMS docs](https://www.netlifycms.org/docs/widgets/)
